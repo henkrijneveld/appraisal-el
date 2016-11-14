@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icons/social-icons.html">
 
 <!--
 `appraisal-el`
@@ -13,21 +14,56 @@ element to give a rating. Based upon radiobuttons
       :host {
         display: block;
       }
+
+      .result {
+        margin-bottom: 25px;
+      }
+
+      .red {
+        color: red;
+      }
+
+      .green {
+        color: green;
+      }
+
     </style>
-    <h2>Hello [[prop1]]</h2>
+
+    <div class="result">
+      <content></content><br/>
+      <iron-icon class="red" icon="social:mood-bad"></iron-icon>
+      <paper-radio-group selected="{{oordeel}}">
+        <paper-radio-button name="1"></paper-radio-button>
+        <paper-radio-button name="2"></paper-radio-button>
+        <paper-radio-button name="3"></paper-radio-button>
+        <paper-radio-button name="4"></paper-radio-button>
+        <paper-radio-button name="5"></paper-radio-button>
+        <iron-icon class="green" icon="social:mood"></iron-icon>
+      </paper-radio-group>
+    </div>
+
   </template>
 
   <script>
     Polymer({
-
       is: 'appraisal-el',
 
-      properties: {
-        prop1: {
-          type: String,
-          value: 'appraisal-el',
-        },
+      listeners: {
+        'iron-select': '_selectchanged'
       },
+
+      _selectchanged: function(e) {
+        this._setred(e.detail.item.name);
+        this._setgreen(e.detail.item.name);
+      },
+
+      _setred: function(value) {
+        this.$$(".red").style.opacity = value == 1 ? 1 : 0.8 - (value - 1) * 0.2;
+      },
+
+      _setgreen: function(value) {
+        this.$$(".green").style.opacity = value == 5 ? 1 : (value - 1) * 0.2;
+      }
 
     });
   </script>
