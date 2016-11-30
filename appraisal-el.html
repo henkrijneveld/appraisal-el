@@ -1,6 +1,4 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../paper-radio-button/paper-radio-button.html">
-<link rel="import" href="../paper-radio-group/paper-radio-group.html">
+<!-- <link rel="import" href="../polymer/polymer.html"> -->
 <link rel="import" href="../iron-icons/social-icons.html">
 
 <!--
@@ -36,6 +34,10 @@ element to give a rating. Based upon radiobuttons
         }
       }
 
+      .result paper-radio-button {
+        padding: 10px 4px 10px 0px;
+      }
+
     </style>
 
     <div class="result">
@@ -47,6 +49,8 @@ element to give a rating. Based upon radiobuttons
         <paper-radio-button name="3"></paper-radio-button>
         <paper-radio-button name="4"></paper-radio-button>
         <paper-radio-button name="5"></paper-radio-button>
+        <paper-radio-button name="6"></paper-radio-button>
+        <paper-radio-button name="7"></paper-radio-button>
       </paper-radio-group>
       <iron-icon class="green" icon="social:mood"></iron-icon>
     </div>
@@ -67,11 +71,11 @@ element to give a rating. Based upon radiobuttons
       },
 
       _setred: function(value) {
-        this.$$(".red").style.opacity = value == 1 ? 1 : 0.8 - (value - 1) * 0.2;
+        this.$$(".red").style.opacity = value == 1 ? 1 : 0.9 - (value - 1) * 0.15;
       },
 
       _setgreen: function(value) {
-        this.$$(".green").style.opacity = value == 5 ? 1 : (value - 1) * 0.2;
+        this.$$(".green").style.opacity = value == 7 ? 1 : (value - 1) * 0.15;
       }
 
     });
